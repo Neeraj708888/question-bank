@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+/* Tailwind CSS - Add this to your Tailwind configuration file */
+@keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+.animate-marquee {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: marquee 10s linear infinite;
+}
