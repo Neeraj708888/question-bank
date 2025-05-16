@@ -1,4 +1,4 @@
-// slice.jsx file
+ // slice.jsx file
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { axiosInstance } from "./url/axiosInstance";
 
@@ -12,7 +12,8 @@ export const createAdmin = createAsyncThunk(
 
         try {
             const res = await axiosInstance.post('/api/auth/register', userData);
-           
+            
+            console.log(res.data);
             return res.data;
 
         } catch (error) {
@@ -414,7 +415,7 @@ const slice = createSlice({
                 state.loading = false;
                 state.error.register = [action.payload];
             });
-
+ 
         // login Admin
         builder.addCase(loginAdmin.pending, (state) => {
             state.loading = true;

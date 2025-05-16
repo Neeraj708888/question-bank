@@ -34,7 +34,7 @@ const Register = () => {
         if (successMessage?.register) {
           navigate('/login');
         }
-        dispatch(clearMessages()); 
+        dispatch(clearMessages('')); 
       }, 1000);
 
       return () => clearTimeout(timer);

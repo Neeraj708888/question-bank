@@ -29,7 +29,7 @@ router.post('/register', async (req, res) => {
         // Encrypt password
         // const encryptedPassword = CryptoJS.AES.encrypt(password, process.env.PASS_KEY).toString();
 
-        const admin = new Admin.create(
+        const admin = await Admin.create(
             {
                 username: username.toLowerCase(),  // username
                 email: email.toLowerCase(),   // email
@@ -39,13 +39,14 @@ router.post('/register', async (req, res) => {
         );
 
         // admin ko kar do save database mein
-        const savedAdmin = await admin.save();
+        // const savedAdmin = await admin.save();
 
         const { password: _, ...adminData } = admin._doc;   // return admin data excluding password
-        res.status(200).json({message: "Admin registered successfully.", admin: adminData, savedAdmin });  // success if admin save ho chuka ho database mein
+        console.log(admin);
+        res.status(200).json({message: "Admin registered successfully.", admin: adminData});  // success if admin save ho chuka ho database mein
 
     } catch (error) {
-        res.status(500).json({ message: 'username and password mismatch !', error });
+        res.status(500).json({ message: 'username and password mismatch !' ||  error.message });
     }
 });
 

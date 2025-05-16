@@ -19,7 +19,7 @@ const App = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/addTopic' element={<Topic />} />
         <Route path='/topics' element={<TopicCard />} />
-        <Route path='/user' element={<Button/>}/>
+        <Route path='/admin' element={<Button/>}/>
       </Routes>
     </Router>
   )
