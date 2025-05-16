@@ -4,7 +4,6 @@ const Admin = require('../models/Admin');
 const router = require('express').Router();
 const CryptoJS = require('crypto-js');
 const jwt = require('jsonwebtoken');
-
 // Register
 router.post('/register', async (req, res) => {
 
@@ -27,19 +26,23 @@ router.post('/register', async (req, res) => {
             return res.status(409).json({ message: "Admin already registered. Please check username and email !" });
         }
 
-        const admin = new Admin(
+        // Encrypt password
+        // const encryptedPassword = CryptoJS.AES.encrypt(password, process.env.PASS_KEY).toString();
+
+        const admin = new Admin.create(
             {
-                username: req.body.username.toLowerCase(),  // username
-                email: req.body.email.toLowerCase(),   // email
+                username: username.toLowerCase(),  // username
+                email: email.toLowerCase(),   // email
                 // password: req.body.password
-                password: CryptoJS.AES.encrypt(req.body.password, process.env.PASS_KEY).toString(), // password
+                password: CryptoJS.AES.encrypt(password, process.env.PASS_KEY).toString(), // password
             }
         );
 
         // admin ko kar do save database mein
         const savedAdmin = await admin.save();
 
-        res.status(200).json(savedAdmin);  // success if admin save ho chuka ho database mein
+        const { password: _, ...adminData } = admin._doc;   // return admin data excluding password
+        res.status(200).json({message: "Admin registered successfully.", admin: adminData, savedAdmin });  // success if admin save ho chuka ho database mein
 
     } catch (error) {
         res.status(500).json({ message: 'username and password mismatch !', error });
@@ -48,10 +51,10 @@ router.post('/register', async (req, res) => {
 
 // Login Admin
 
-router.post('/login', async (req, res) => {
+router.post('/login' , async (req, res) => {
 
     try {
-        const admin = await Admin.findOne({ username: req.body.username });
+        const admin = await Admin.findOne({ username: (req.body.username) });
 
         // Check if Admin exists
         if (!admin) {
@@ -69,9 +72,10 @@ router.post('/login', async (req, res) => {
 
         // Checks if password matches
         if (originalPassword !== req.body.password) {
-            return res.status(401).json({ message: 'Wrong Credentials! (password mismatch)' });
+            return res.status(401).json({ message: 'username and password mismatch !' });
         }
 
+        
         // Destructure admin object to hide password
         const { password, ...others } = admin._doc;
 
@@ -91,20 +95,3 @@ router.post('/login', async (req, res) => {
 });
 
 module.exports = router;
-
-
-
-
-/* 
-
-When you run locally:
-process.env.NODE_ENV = 'development'
-so ➔ secure: false & sameSite: lax So you can POST/GET easily between ports (frontend 5173 and backend 5000).
-Not use here secure: true Because secure cookies need HTTPS, and localhost is HTTP.
-
-When you deploy (Render, Vercel):
-process.env.NODE_ENV = 'production'
-so ➔ secure: true & sameSite: none 
-
-*/
-
