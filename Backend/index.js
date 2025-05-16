@@ -11,6 +11,7 @@ const questionRoute = require('./routes/questionRoute');
 
 
 
+
 app.use(cors({
     origin: process.env.FRONTEND_URL || "https://question-bank-frontend-navy.vercel.app",  // your frontend PORT or All Ports using * 
     credentials: true
