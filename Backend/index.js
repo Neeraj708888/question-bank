@@ -13,7 +13,7 @@ const questionRoute = require('./routes/questionRoute');
 
 
 app.use(cors({
-    origin: process.env.FRONTEND_URL,  // your frontend PORT or All Ports using * 
+    origin: "https://question-bank-frontend-navy.vercel.app" || process.env.FRONTEND_UR,  // your frontend PORT or All Ports using * 
     credentials: true
 })); 
 app.use(express.json()); // convert the incoming JS object into JSON without using it value is undefined 
