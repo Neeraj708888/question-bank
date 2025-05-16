@@ -28,8 +28,9 @@ const Navbar = () => {
             <button onClick={() => navigate('/addTopic')} className="hover:bg-blue-600 px-3 py-1 rounded-md">Add Topic</button>
             <button onClick={() => navigate('/topics')} className="hover:bg-blue-600 px-3 py-1 rounded-md">Topic</button>
             <button onClick={() => navigate('/admin')} className="hover:bg-blue-600 px-3 py-1 rounded-md">
-              All Admin <span className="text-red-300 text-lg font-bold">{adminInfo?.length || 0}</span>
+              All Admin
             </button>
+            <p className="animate-blink">Count <span className="text-red-300 text-lg font-bold">{adminInfo?.length || 0}</span></p>
           </div>
 
           {/* Mobile menu button */}
@@ -47,8 +48,9 @@ const Navbar = () => {
             <button onClick={() => navigate('/login')} className="hover:bg-blue-600 px-3 py-2 rounded-md">Login</button>
             <button onClick={() => navigate('/topics')} className="hover:bg-blue-600 px-3 py-2 rounded-md">Topic</button>
             <button onClick={() => navigate('/admin')} className="hover:bg-blue-600 px-3 py-2 rounded-md">
-              All Admin <span className="text-red-300 text-lg font-bold">{adminInfo?.length || 0}</span>
+              All Admin
             </button>
+            <p className="animate-blink">Count <span className="text-red-300 text-lg font-bold">{adminInfo?.length || 0}</span></p>
           </div>
         )}
       </div>
