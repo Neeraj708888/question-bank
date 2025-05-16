@@ -58,6 +58,7 @@ const Navbar = () => {
                     <button className="hover:bg-blue-600 px-1 py-1 rounded-md text-xl" onClick={()=> navigate('/')} >Home</button>
                     <button className="hover:bg-blue-600 px-1.5 py-1.5 rounded-md text-xl" onClick={()=> navigate('/login')}>Login</button>
                     <button className="hover:bg-blue-600 px-2 py-2 rounded-md text-xl" onClick={()=> navigate('/topics')}>Topic</button>
+                    <button className="hover:bg-blue-600 px-2 py-2 rounded-md text-xl" onClick={()=> navigate('/user')}>All Admin</button>
 
                     {/* <p className='hover:bg-blue-600 px-3 py-2 rounded-md text-red-400 font-bold text-center'> Total User <span className='text-green-900'>User Length</span></p> */}
 
