@@ -15,8 +15,7 @@ logs/
 # Vercel Config (if deploying to Vercel)
 .vercel/
 
-# Build Files (for TypeScript or Bundlers)
-dist/
+# Build Files (for TypeScript or Bundlers)git 
 build/
 
 # Temporary Files
