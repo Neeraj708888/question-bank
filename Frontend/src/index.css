@@ -9,7 +9,6 @@
     transform: translateX(-100%);
   }
 }
-
 .animate-marquee {
   display: inline-block;
   white-space: nowrap;
