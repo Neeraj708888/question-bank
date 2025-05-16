@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-
+import { useSelector } from "react-redux";
+const { adminInfo } = useSelector((state) => state.admin);
 const Navbar = () => {
 
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
-
+    const { adminInfo } = useSelector((state) => state.admin);
     const toggleMenu = () => setIsOpen(!isOpen);
 
     return (
@@ -29,7 +30,13 @@ const Navbar = () => {
                          <button className="hover:bg-blue-600 px-2 py-2 rounded-md text-md" onClick={()=> navigate('/addTopic')}>Add Topic</button>
                         <button className="hover:bg-blue-600 px-2 py-2 rounded-md text-md" onClick={()=> navigate('/topics')}>Topic</button>
                         <button className="hover:bg-blue-600 px-2 py-2 rounded-md text-md" onClick={()=> navigate('/user')}>All Admin</button>
-                        {/* <p className='hover:bg-blue-600 px-3 py-2 rounded-md text-red-400'> Count <span className='text-green-900'>User Count</span></p> */}
+                        <button className="hover:bg-blue-600 px-3 py-2 rounded-md text-md flex items-center gap-2 transition-colors duration-300 w-full sm:w-auto"
+                          onClick={() => navigate("/user")} >
+                          All Admin{" "}
+                          <span className="text-red-300 text-lg font-bold animate-blink">
+                            {adminInfo?.length || 0}
+                          </span>
+                        </button>
 
                         {/* Search Box */}
                         <div className="border rounded-b-sm">
@@ -59,9 +66,12 @@ const Navbar = () => {
                     <button className="hover:bg-blue-600 px-1.5 py-1.5 rounded-md text-xl" onClick={()=> navigate('/login')}>Login</button>
                     <button className="hover:bg-blue-600 px-2 py-2 rounded-md text-xl" onClick={()=> navigate('/topics')}>Topic</button>
                     <button className="hover:bg-blue-600 px-2 py-2 rounded-md text-xl" onClick={()=> navigate('/user')}>All Admin</button>
-
-                    {/* <p className='hover:bg-blue-600 px-3 py-2 rounded-md text-red-400 font-bold text-center'> Total User <span className='text-green-900'>User Length</span></p> */}
-
+                    <button className="hover:bg-blue-600 px-2 py-2 rounded-md text-xl" onClick={() => navigate("/user")} >
+                      All Admin{" "}
+                      <span className="text-red-300 text-lg font-bold animate-blink">
+                    {adminInfo?.length || 0} </span>
+                    </button>
+                    
                     {/* Mobile Search Box */}
                     <div className="mt-2 items-center flex justify-center">
                         <input
