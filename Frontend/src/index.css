@@ -15,11 +15,6 @@
   overflow: hidden;
   animation: marquee 10s linear infinite;
 }
-
-.animate-blink {
-  animation: blink 1s step-start infinite;
-}
-
 @keyframes blink {
   0%,
   100% {
@@ -29,3 +24,8 @@
     color: green;
   }
 }
+.animate-blink {
+  animation: blink 1s step-start infinite;
+}
+
+
