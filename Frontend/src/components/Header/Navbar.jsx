@@ -29,9 +29,7 @@ const Navbar = () => {
                         <button className="hover:bg-blue-600 px-1.5 py-1.5 rounded-md text-md" onClick={()=> navigate('/login')} >Login</button>
                          <button className="hover:bg-blue-600 px-2 py-2 rounded-md text-md" onClick={()=> navigate('/addTopic')}>Add Topic</button>
                         <button className="hover:bg-blue-600 px-2 py-2 rounded-md text-md" onClick={()=> navigate('/topics')}>Topic</button>
-                        <button className="hover:bg-blue-600 px-2 py-2 rounded-md text-md" onClick={()=> navigate('/user')}>All Admin</button>
-                        <button className="hover:bg-blue-600 px-3 py-2 rounded-md text-md flex items-center gap-2 transition-colors duration-300 w-full sm:w-auto"
-                          onClick={() => navigate("/user")} >
+                        <button className="hover:bg-blue-600 px-2 py-2 rounded-md text-md onClick={() => navigate("/user")} >
                           All Admin{" "}
                           <span className="text-red-300 text-lg font-bold animate-blink">
                             {adminInfo?.length || 0}
@@ -65,7 +63,6 @@ const Navbar = () => {
                     <button className="hover:bg-blue-600 px-1 py-1 rounded-md text-xl" onClick={()=> navigate('/')} >Home</button>
                     <button className="hover:bg-blue-600 px-1.5 py-1.5 rounded-md text-xl" onClick={()=> navigate('/login')}>Login</button>
                     <button className="hover:bg-blue-600 px-2 py-2 rounded-md text-xl" onClick={()=> navigate('/topics')}>Topic</button>
-                    <button className="hover:bg-blue-600 px-2 py-2 rounded-md text-xl" onClick={()=> navigate('/user')}>All Admin</button>
                     <button className="hover:bg-blue-600 px-2 py-2 rounded-md text-xl" onClick={() => navigate("/user")} >
                       All Admin{" "}
                       <span className="text-red-300 text-lg font-bold animate-blink">
