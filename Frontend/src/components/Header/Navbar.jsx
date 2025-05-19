@@ -43,14 +43,14 @@ const Navbar = () => {
 
         {/* Mobile menu dropdown */}
         {isOpen && (
-          <div className="md:hidden flex flex-col space-y-2 mt-4">
+          <div className="md:hidden flex flex-col items-center space-y-2 mt-4">
             <button onClick={() => navigate('/')} className="hover:bg-blue-600 px-3 py-2 rounded-md">Home</button>
             <button onClick={() => navigate('/login')} className="hover:bg-blue-600 px-3 py-2 rounded-md">Login</button>
             <button onClick={() => navigate('/topics')} className="hover:bg-blue-600 px-3 py-2 rounded-md">Topic</button>
             <button onClick={() => navigate('/admin')} className="hover:bg-blue-600 px-3 py-2 rounded-md">
               All Admin
             </button>
-            <p className="animate-blink">Count <span className="text-red-300 text-lg font-bold">{adminInfo?.length || 0}</span></p>
+            <p className="animate-blink text-center items-center">Count <span className="text-red-300 text-lg font-bold">{adminInfo?.length || 0}</span></p>
           </div>
         )}
       </div>
