@@ -43,16 +43,16 @@ router.post('/register', async (req, res) => {
 
         const { password: _, ...adminData } = admin._doc;   // return admin data excluding password
         console.log(admin);
-        res.status(200).json({message: "Admin registered successfully.", admin: adminData});  // success if admin save ho chuka ho database mein
+        res.status(200).json({ message: "Admin registered successfully.", admin: adminData });  // success if admin save ho chuka ho database mein
 
     } catch (error) {
-        res.status(500).json({ message: 'username and password mismatch !' ||  error.message });
+        res.status(500).json({ message: 'username and password mismatch !' || error.message });
     }
 });
 
 // Login Admin
 
-router.post('/login' , async (req, res) => {
+router.post('/login', async (req, res) => {
 
     try {
         const admin = await Admin.findOne({ username: (req.body.username) });
@@ -76,7 +76,7 @@ router.post('/login' , async (req, res) => {
             return res.status(401).json({ message: 'username and password mismatch !' });
         }
 
-        
+
         // Destructure admin object to hide password
         const { password, ...others } = admin._doc;
 
