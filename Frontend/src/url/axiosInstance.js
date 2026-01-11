@@ -3,7 +3,8 @@ import axios from 'axios';
 
 export const axiosInstance = axios.create({
   baseURL: "https://question-bank-backend-three.vercel.app" || import.meta.env.VITE_API_URL,
-  withCredentials: true, 
+  // baseURL: "http://localhost:5000",
+  withCredentials: true,
 });
 
 // Automatically attach token to every request
@@ -14,7 +15,7 @@ axiosInstance.interceptors.request.use((config) => {
   }
   return config;
 },
-(error) => {
+  (error) => {
     return Promise.reject(error); // Handling any interceptor errors
   }
 );

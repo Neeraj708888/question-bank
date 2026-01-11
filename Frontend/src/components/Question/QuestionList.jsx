@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getQuestion, clearMessages, updateQuestion, deleteQuestion } from '../../slice';
 import { useParams } from 'react-router-dom';
+import { Pencil, Trash2 } from 'lucide-react';
 
 const QuestionList = () => {
 
@@ -103,8 +104,12 @@ const QuestionList = () => {
                         {adminInfo.map((q) => (
                             <li key={q._id} className="p-4 border rounded-lg bg-gray-50 shadow-sm">
                                 <div className="flex justify-between mb-4">
-                                    <button onClick={() => handleEditQuestion(q)} className="bg-green-500 text-white px-4 py-2 rounded">Edit</button>
-                                    <button onClick={() => handleDeleteQuestion(q._id)} className="bg-red-500 text-white px-4 py-2 rounded">Delete</button>
+                                    <button onClick={() => handleEditQuestion(q)} className="bg-green-500 text-white px-4 py-2 rounded">
+                                        <Pencil size={20} />
+                                    </button>
+                                    <button onClick={() => handleDeleteQuestion(q._id)} className="bg-red-500 text-white px-4 py-2 rounded">
+                                        <Trash2 size={20} />
+                                    </button>
                                 </div>
 
                                 <p className="font-semibold text-gray-800">Q: {q.question}</p>

@@ -13,28 +13,26 @@ const Login = () => {
     password: '',
   });
 
-  // Handle input Fields
+  // Handle input fields
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Submit Form
+  // Submit form
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Basic Validation
     if (!formData.username || !formData.password) {
-      alert('Both fields are required !');
+      alert('Both fields are required!');
       return;
     }
 
     dispatch(loginAdmin(formData));
   };
 
+  // Handle success / error messages
   useEffect(() => {
-
-    if (Object.keys(error).length > 0 || successMessage?.login) {
-      // Clear messages after 3 seconds
+    if ((error && Object.keys(error).length > 0) || successMessage?.login) {
       const timer = setTimeout(() => {
         if (successMessage?.login) {
           navigate('/addTopic');
@@ -47,57 +45,96 @@ const Login = () => {
   }, [error, successMessage, dispatch, navigate]);
 
   return (
-    <div className='flex items-center justify-center bg-gradient-to-r from-purple-300 via-green-200 to-teal-200 min-h-screen p-4'>
-      <form onSubmit={handleSubmit} className='bg-gray-50 w-full max-w-md p-8 rounded-2xl shadow-2xl'>
-        <fieldset className='border-2 p-4 rounded-lg border-indigo-300'>
-          <legend className='font-semibold tracking-wider text-2xl text-center text-blue-600'>LOGIN</legend>
+    <div
+      className="flex items-center justify-center
+                 min-h-screen min-h-[100svh] min-h-[100dvh]
+                 bg-gradient-to-r from-purple-300 via-green-200 to-teal-200
+                 px-4"
+    >
+      <form
+        onSubmit={handleSubmit}
+        className="bg-gray-50 w-full max-w-md
+                   p-4 sm:p-8
+                   rounded-2xl shadow-2xl"
+      >
+        <fieldset className="border-2 p-4 rounded-lg border-indigo-300">
+          <legend
+            className="font-semibold tracking-wider
+                       text-xl sm:text-2xl
+                       text-center text-blue-600"
+          >
+            LOGIN
+          </legend>
 
-          {/* Feedback */}
+          {/* Error Message */}
           {error?.login && (
-            <div className="text-red-500 mb-4">
-
-              <p>{error.login}</p>
-
-            </div>
+            <p className="text-red-500 text-center mt-2">
+              {error.login}
+            </p>
           )}
 
+          {/* Success Message */}
           {successMessage?.login && (
-            <div className="text-green-500 mb-4">
-              <p>{successMessage.login}</p>
-            </div>
+            <p className="text-green-500 text-center mt-2">
+              {successMessage.login}
+            </p>
           )}
 
-          <fieldset className='border-2 w-full max-w-md p-4 rounded-2xl shadow-2xl bg-amber-100'>
-            <legend className='font-semibold tracking-wide text-lg text-orange-500'>Username</legend>
+          {/* Username */}
+          <fieldset className="border-2 p-3 sm:p-4 rounded-2xl
+                               shadow-xl bg-amber-100 mt-4">
+            <legend className="font-semibold tracking-wide
+                               text-base sm:text-lg
+                               text-orange-500">
+              Username
+            </legend>
             <input
               type="text"
-              name='username'
+              name="username"
               value={formData.username}
               onChange={handleChange}
-              placeholder='Username'
+              placeholder="Username"
               autoComplete="username"
-              className='px-4 py-2 rounded-xl w-full bg-black text-white font-semibold border-green-500'
+              className="w-full h-11 px-4 rounded-xl
+                         bg-black text-white font-semibold
+                         outline-none"
             />
           </fieldset>
 
-          <fieldset className='border-2 w-full max-w-md p-4 rounded-2xl shadow-2xl bg-amber-100 mt-4'>
-            <legend className='font-semibold tracking-wide text-lg text-orange-400'>Password</legend>
+          {/* Password */}
+          <fieldset className="border-2 p-3 sm:p-4 rounded-2xl
+                               shadow-xl bg-amber-100 mt-4">
+            <legend className="font-semibold tracking-wide
+                               text-base sm:text-lg
+                               text-orange-400">
+              Password
+            </legend>
             <input
               type="password"
-              name='password'
+              name="password"
               value={formData.password}
               onChange={handleChange}
-              placeholder='Password'
+              placeholder="Password"
               autoComplete="current-password"
-              className='px-4 py-2 rounded-xl w-full bg-black text-white font-semibold border-green-500'
+              className="w-full h-11 px-4 rounded-xl
+                         bg-black text-white font-semibold
+                         outline-none"
             />
           </fieldset>
 
-          <div className='flex justify-end mt-4'>
+          {/* Button */}
+          <div className="flex justify-end mt-5">
             <button
-              type='submit'
+              type="submit"
               disabled={loading}
-              className={`border-2 rounded-2xl px-4 py-2 text-xl font-semibold shadow-2xl tracking-wide cursor-pointer ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-red-500 text-white'
+              className={`w-full sm:w-auto
+                          px-6 py-3 rounded-2xl
+                          text-lg sm:text-xl font-semibold
+                          shadow-2xl tracking-wide
+                          transition
+                          ${loading
+                  ? 'bg-gray-400 cursor-not-allowed'
+                  : 'bg-red-500 text-white hover:bg-red-600'
                 }`}
             >
               {loading ? 'Logging in...' : 'Login'}

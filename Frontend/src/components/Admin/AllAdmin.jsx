@@ -1,13 +1,13 @@
+import { Pencil, Trash2 } from "lucide-react"
 
 // GetAllUser.jsx
 export const AllAdmin = ({ user, onUpdate, onDelete }) => {
   return (
-    <section className="p-3 bg-white rounded-lg shadow-md w-64 relative">
+    <section className="p-3 bg-white rounded-lg shadow-md w-72 max-w-5xl m-auto relative">
       {/* Status Flag */}
-      <div 
-        className={`absolute top-2 right-2 px-2 py-1 rounded-full text-xs font-semibold ${
-          user?.isAdmin ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
-        }`}
+      <div
+        className={`absolute top-2 right-2 px-2 py-1 rounded-full text-xs font-semibold ${user?.isAdmin ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+          }`}
       >
         {user?.isAdmin ? "Active" : "Inactive"}
       </div>
@@ -20,17 +20,15 @@ export const AllAdmin = ({ user, onUpdate, onDelete }) => {
 
       {/* Action Buttons */}
       <div className="flex space-x-2 mt-3 justify-end">
-        <button 
-          className="px-3 py-1 text-xs bg-blue-500 text-white rounded hover:bg-blue-600"
-          onClick={() => onUpdate(user)}
-        >
-          Update
+        <button className="px-3 py-1 text-xs bg-blue-500 text-white rounded hover:bg-blue-600"
+          onClick={() => onUpdate(user)}>
+          <Pencil size={20} />
         </button>
-        <button 
+        <button
           className="px-3 py-1 text-xs bg-red-500 text-white rounded hover:bg-red-600"
           onClick={() => onDelete(user)}
         >
-          Delete
+          <Trash2 size={20} />
         </button>
       </div>
     </section>

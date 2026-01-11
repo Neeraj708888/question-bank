@@ -14,7 +14,7 @@ export const Button = () => {
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [currentUser, setCurrentUser] = useState({ username: '', email: '', _id: '' });
 
-  useEffect(() => { 
+  useEffect(() => {
     dispatch(clearMessages(''));
     dispatch(getAdmin());
   }, [dispatch]);
@@ -46,7 +46,7 @@ export const Button = () => {
 
   const handleDelete = () => {
     if (selectedUser) {
-      dispatch(deleteAdmin(selectedUser._id)).then(() => dispatch(getUser())).finally(() => {
+      dispatch(deleteAdmin(selectedUser._id)).then(() => dispatch(getAdmin())).finally(() => {
         setShowModal(false);
         setSelectedUser(null);
       });
@@ -77,12 +77,12 @@ export const Button = () => {
         {adminInfo?.length > 0 ? (
           adminInfo.map((user) => (
             <div key={user._id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
-              
+
               < AllAdmin
                 user={user}
                 onUpdate={handleUpdate}
                 onDelete={() => confirmDelete(user)}
-                successMessage = {successMessage}
+                successMessage={successMessage}
               />
             </div>
           ))

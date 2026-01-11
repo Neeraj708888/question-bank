@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearMessages, createQuestion, deleteTopic, getTopic, updateQuestion, updateTopic } from "../../slice";
 import { useNavigate, useParams } from "react-router-dom"; // Import useNavigate
+import { Eye, Pencil, Plus, Trash2 } from "lucide-react";
 
 
 const TopicCard = () => {
@@ -184,29 +185,29 @@ const TopicCard = () => {
                     className="bg-green-700 text-white py-1 px-3 rounded hover:bg-green-900 transition cursor-pointer tracking-wider"
                     onClick={() => handleView(topic)}
                   >
-                    View
+                    <Eye size={20} />
                   </button>
 
                   <button
                     className="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-900 transition cursor-pointer tracking-wider"
                     onClick={() => handleUpdate(topic)}
                   >
-                    Update
+                    <Pencil size={20} />
                   </button>
                   <button
                     className="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-900 transition cursor-pointer tracking-wider"
                     onClick={() => handleDelete(topic._id)}
                   >
-                    Delete
+                    <Trash2 size={20} />
                   </button>
                 </div>
 
-                <div>
+                <div className="w-32">
                   <button
-                    className="top-2 right-2 bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-900 transition cursor-pointer"
+                    className="top-2 right-2 w-full flex justify-center items-center bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-900 transition cursor-pointer"
                     onClick={() => handleAddQuestions(topic)} // Handle navigation when clicked
                   >
-                    Add Questions
+                    <Plus size={20} /> <span>Questions</span>
                   </button>
                 </div>
               </div>
